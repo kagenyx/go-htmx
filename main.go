@@ -1,11 +1,20 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
 	"net/http"
 
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
 )
+
+var db *sql.DB
+
+func initDB() {
+	var err error
+	db, err = sql.Open("mysql", "root:root@(127.0.0.1)/testdb")
+}
 
 func main() {
 
